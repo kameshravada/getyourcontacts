@@ -12,7 +12,7 @@ const AllContacts = () => {
   const { contacts, setContacts, backendURL, userData, searchValue } =
     useContext(AppContext);
 
-  const[status,setStatus]=useState(false);
+  const [status, setStatus] = useState(false);
 
   const email = userData ? userData.email : "";
 
@@ -40,7 +40,10 @@ const AllContacts = () => {
         setStatus(false);
         alert("Contacts synced successfully!");
       } catch (error) {
-        toast.error("Error in syncing contacts please relogin..",{className:"!bg-white !text-red-600 !shadow"});
+        setStatus(false);
+        toast.error("Error in syncing contacts please relogin..", {
+          className: "!bg-white !text-red-600 !shadow",
+        });
         console.error("Error syncing contacts:", error);
       }
     },
@@ -49,7 +52,6 @@ const AllContacts = () => {
     },
   });
 
-
   const filteredAndSortedContacts = useMemo(() => {
     return contacts
       .filter((contact) =>
@@ -57,7 +59,6 @@ const AllContacts = () => {
       )
       .sort((a, b) => a.name.localeCompare(b.name));
   }, [contacts, searchValue]);
-
 
   return (
     <div>
@@ -93,7 +94,7 @@ const AllContacts = () => {
         onClick={() => login()}
       >
         <IconRefresh className={`${status ? "animate-spin" : ""}`} />
-        {(status) ? "syncing... " : "Sync"}
+        {status ? "syncing... " : "Sync"}
       </div>
     </div>
   );
