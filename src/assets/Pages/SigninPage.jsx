@@ -38,12 +38,12 @@ const SigninPage = () => {
       //fetching contacts
 
       try {
-        // const fetchContacts = await axios.get(
-        //   backendURL + "/contacts",
-        //   {},
-        //   { withCredentials: true }
-        // );
-        // setContacts(fetchContacts.data); // assuming this is a list of contacts
+        const fetchContacts = await axios.get(
+          backendURL + "/contacts",
+          {},
+          { withCredentials: true }
+        );
+        setContacts(fetchContacts.data); // assuming this is a list of contacts
       } catch (err) {
         console.log(err, err.message);
         toast.error("Failed to fetch contacts:", err.message, {
