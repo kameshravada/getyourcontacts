@@ -45,6 +45,7 @@ const SigninPage = () => {
         );
         setContacts(fetchContacts.data); // assuming this is a list of contacts
       } catch (err) {
+        console.error(err, err.message);
         toast.error("Failed to fetch contacts:", err.message, {
           className: "!bg-white !text-red-600 !shadow",
         });
