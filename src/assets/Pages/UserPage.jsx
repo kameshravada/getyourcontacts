@@ -24,10 +24,11 @@ const UserPage = () => {
       try {
         const fetchContacts = await axios.get(
           backendURL + "/contacts",
-          {withCredentials:true},
+          { withCredentials: true },
           {}
         );
         //console.log("its executing while refresh")
+        console.log(userData);
         setContacts(fetchContacts.data); // assuming this is a list of contacts
       } catch (err) {
         toast.error("Failed to fetch contacts:", err.message, {
@@ -40,7 +41,6 @@ const UserPage = () => {
 
     fetchContacts();
   }, [userData]);
-
 
   return (
     <div className="bg-[#f8fafd] !h-screen">
