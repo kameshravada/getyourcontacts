@@ -4,6 +4,7 @@ import { AppContext } from "../../Context/AppContext";
 import axios from "axios";
 import { LoadingOverlay } from "@mantine/core";
 import { toast } from "react-toastify";
+import { IconEye, IconEyeClosed } from "@tabler/icons-react";
 
 const SignupPage = () => {
   const [name, setName] = useState("");
@@ -11,6 +12,7 @@ const SignupPage = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const { backendURL } = useContext(AppContext);
 
@@ -27,7 +29,9 @@ const SignupPage = () => {
       });
       if (response.status === 201) {
         navigate("/login");
-        toast.success("Account created successfully Please login.",{className:"!bg-white !text-green-600 !shadow"});
+        toast.success("Account created successfully Please login.", {
+          className: "!bg-white !text-green-600 !shadow",
+        });
       } else {
         toast.error("Email already exists", {
           className: "!bg-white !text-red-600 !shadow",
@@ -110,7 +114,7 @@ const SignupPage = () => {
               <div className="mt-2">
                 <div className="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-teal-800">
                   <input
-                    type="text"
+                    type={passwordVisible ? "text" : "password"}
                     name="password"
                     id="password"
                     className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
@@ -118,6 +122,16 @@ const SignupPage = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
+                  <div
+                    className="pr-2 cursor-pointer"
+                    onClick={() => setPasswordVisible(!passwordVisible)}
+                  >
+                    {passwordVisible ? (
+                      <IconEye stroke={1} className="text-black/70" />
+                    ) : (
+                      <IconEyeClosed stroke={1} className="text-black/70" />
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

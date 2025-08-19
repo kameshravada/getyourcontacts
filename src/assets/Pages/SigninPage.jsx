@@ -114,8 +114,15 @@ const SigninPage = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
-                  <div className="pr-2 cursor-pointer" onClick={() => setPasswordVisible(!passwordVisible)}>
-                    { passwordVisible ? <IconEye/> : <IconEyeClosed /> }
+                  <div
+                    className="pr-2 cursor-pointer"
+                    onClick={() => setPasswordVisible(!passwordVisible)}
+                  >
+                    {passwordVisible ? (
+                      <IconEye stroke={1} className="text-black/70" />
+                    ) : (
+                      <IconEyeClosed stroke={1} className="text-black/70" />
+                    )}
                   </div>
                 </div>
               </div>
