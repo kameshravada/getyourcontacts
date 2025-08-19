@@ -18,7 +18,8 @@ import { ToastContainer } from "react-toastify";
 import Logout from "./assets/Auth/Logout";
 import Cookies from "js-cookie";
 import "react-toastify/dist/ReactToastify.css"; // Import default styles
-
+import PrivacyPolicy from "./assets/Pages/PrivacyPolicyPage";
+import TermsOfService from "./assets/Pages/TermOfService";
 
 const PrivateRoute = ({ children }) => {
   const jwt = Cookies.get("jwt"); // 'jwt' is your cookie key
@@ -35,8 +36,10 @@ function App() {
       <BrowserRouter>
         <div className="">
           <Routes>
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/logout" element={<Logout />} />
-            <Route element={<PrivateRoute/>}>
+            <Route element={<PrivateRoute />}>
               <Route path="/user" element={<UserPage />}>
                 <Route index element={<AllContacts />} />
                 <Route path="/user/details/:id" element={<ContactDetails />} />
