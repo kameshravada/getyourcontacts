@@ -3,12 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../Context/AppContext";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import {IconEye, IconEyeClosed, IconEyeOff} from "@tabler/icons-react";
 
 const SigninPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const { backendURL, setIsLoggedIn, setContacts } = useContext(AppContext);
 
@@ -104,7 +106,7 @@ const SigninPage = () => {
               <div className="mt-2">
                 <div className="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-teal-800">
                   <input
-                    type="text"
+                    type={passwordVisible ? "text" : "password"}
                     name="password"
                     id="password"
                     className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
@@ -112,6 +114,9 @@ const SigninPage = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
+                  <div className="pr-2 cursor-pointer" onClick={() => setPasswordVisible(!passwordVisible)}>
+                    { passwordVisible ? <IconEye/> : <IconEyeClosed /> }
+                  </div>
                 </div>
               </div>
             </div>
