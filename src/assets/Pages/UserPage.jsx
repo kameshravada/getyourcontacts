@@ -28,7 +28,7 @@ const UserPage = () => {
           {}
         );
         //console.log("its executing while refresh")
-        console.log(userData);
+//        console.log(userData);
         setContacts(fetchContacts.data); // assuming this is a list of contacts
       } catch (err) {
         toast.error("Failed to fetch contacts:", err.message, {

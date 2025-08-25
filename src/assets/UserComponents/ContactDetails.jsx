@@ -75,17 +75,19 @@ const ContactDetails = ({ details, setDetails, setShowDetails }) => {
           id="iconleft"
           className="cursor-pointer hover:bg-gray-200 rounded-full p-3 flex justify-center"
           onClick={() => {
-            navigate(-1);
+            navigate("/user");
             //console.log("clicked on arrow");
           }}
         >
           <IconArrowNarrowLeft />
         </div>
         <div className=" flex md:gap-5 lg:pr-8 justify-center items-center">
-          <button className="flex justify-center gap-2 bg-[#0b57d0] text-white py-2 px-3 rounded-3xl cursor-pointer">
-            <IconPencil overlineThickness={"2px"} size={20} />
-            <span className="text-sm">Edit</span>
-          </button>
+          <Link to={`/user/edit/${id}`}>
+            <button className="flex justify-center gap-2 bg-[#0b57d0] text-white py-2 px-3 rounded-3xl cursor-pointer">
+              <IconPencil overlineThickness={"2px"} size={20} />
+              <span className="text-sm">Edit</span>
+            </button>
+          </Link>
           <button className="hover:bg-gray-200 rounded-full p-3 cursor-pointer">
             <IconTrash />
           </button>

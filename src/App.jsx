@@ -20,6 +20,7 @@ import Cookies from "js-cookie";
 import "react-toastify/dist/ReactToastify.css"; // Import default styles
 import PrivacyPolicy from "./assets/Pages/PrivacyPolicyPage";
 import TermsOfService from "./assets/Pages/TermOfService";
+import EditContact from "./assets/UserComponents/EditContact";
 
 const PrivateRoute = ({ children }) => {
   const jwt = Cookies.get("jwt"); // 'jwt' is your cookie key
@@ -43,6 +44,7 @@ function App() {
               <Route path="/user" element={<UserPage />}>
                 <Route index element={<AllContacts />} />
                 <Route path="/user/details/:id" element={<ContactDetails />} />
+                <Route path="/user/edit/:id" element={<EditContact />} />
               </Route>
             </Route>
             <Route path="/signin" element={<SigninPage />} />
